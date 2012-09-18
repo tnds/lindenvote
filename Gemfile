@@ -63,3 +63,4 @@ end
 
 gem "devise"
 gem "cancan"
+gem "simple_form"
