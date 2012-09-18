@@ -51,15 +51,15 @@
               <li><%= link_to "Link2", "/path2"  %></li>
               <li><%= link_to "Link3", "/path3"  %></li>
             </ul>
+            <% if signed_in? %>
             <ul class="nav pull-right">
               <li>
-                <% if signed_in? %>
-                 <%= link_to "Logout", destroy_user_session_path %>
-                <% else %>
-                 <%= link_to "Login", new_user_session_path %>
-                <% end %>
+                <%= link_to "Logout", destroy_user_session_path %>
               </li>
             </ul>
+            <% else %>
+              <%= render :partial => 'layouts/navbar_login' %>
+            <% end %>
           </div><!--/.nav-collapse -->
         </div>
       </div>
