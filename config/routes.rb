@@ -1,7 +1,9 @@
 Lindenvote::Application.routes.draw do
+  resources :topics
+
   devise_for :users
 
-  root :to => "home#index"
+  root :to => "topics#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
