@@ -47,6 +47,7 @@ group :development, :test do
 	gem "pry-rails"
 	gem "rack-livereload"
 	gem 'rb-fsevent', '~> 0.9.1'
+	gem "rspec-rails"
 end
 
 group :test do
@@ -58,7 +59,6 @@ group :test do
 	gem 'guard-livereload'
   gem "factory_girl_rails"
   gem 'simplecov', :require => false
-  gem "rspec-rails"
 end
 
 gem "devise"
