@@ -21,7 +21,5 @@ public/uploads
 .rspec
 .rvmrc
 ERD.png
-config/email.yml
-config/database.yml
 *.gem
 coverage
