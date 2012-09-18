@@ -1,4 +1,4 @@
 rvm:
   - 1.9.3
 before_script:
-  - "rake db:test:prepare"
+  - "bundle exec rake db:test:prepare db:migrate"
