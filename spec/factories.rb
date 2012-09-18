@@ -5,7 +5,6 @@ FactoryGirl.define do
 		password "123456"
 	end
 
-  
   factory :topic do
     user
     sequence(:title) {|n| "Title #{n}"}
