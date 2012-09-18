@@ -51,6 +51,15 @@
               <li><%= link_to "Link2", "/path2"  %></li>
               <li><%= link_to "Link3", "/path3"  %></li>
             </ul>
+            <ul class="nav pull-right">
+              <li>
+                <% if signed_in? %>
+                 <%= link_to "Logout", destroy_user_session_path %>
+                <% else %>
+                 <%= link_to "Login", new_user_session_path %>
+                <% end %>
+              </li>
+            </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
@@ -59,9 +68,15 @@
     <div class="container">
       <div class="content">
         <div class="row">
-           <div id="main" class="span9">
-              <%= yield %>
-            </div>
+          <div id="main" class="span9">
+            <% flash.each do |name, msg| %>
+              <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+                <a class="close" data-dismiss="alert">×</a>
+                <%= msg %>
+              </div>
+            <% end %>
+            <%= yield %>
+          </div>
         </div><!--/row-->
       </div><!--/content-->
 
