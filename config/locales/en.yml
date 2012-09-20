@@ -4,3 +4,11 @@
 en:
   email: "Email"
   password: "Password"
+  sign_up: "Sign up"
+  username_or_email: "Username or Email"
+  forgot_password: "Forgot your Password?"
+  edit_account: "Edit Account"
+  change_password: "Change your password"
+  devise:
+    failure:
+      invalid: 'Invalid login or password.'
