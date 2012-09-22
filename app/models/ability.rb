@@ -8,7 +8,8 @@ class Ability
     if user.role == "admin"
       can :manage, :all
     elsif user.role == "user"
-      can [:create, :read], Topic
+      can [:create, :read, :upvote, :downvote, :upvote_poll, :downvote_poll], Topic
+      can [:create, :read, :upvote, :downvote], Argument
     else
       can :read, Topic
     end

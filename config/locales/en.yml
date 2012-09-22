@@ -9,6 +9,9 @@ en:
   forgot_password: "Forgot your Password?"
   edit_account: "Edit Account"
   change_password: "Change your password"
-  devise:
-    failure:
-      invalid: 'Invalid login or password.'
+  created_by: "created by"
+  "yes": "Yes"
+  "no": "No"
+  no_votes: "No votes yet"
+  add_pro_argument: "Add Pro Argument"
+  add_contra_argument: "Add Contra Argument"

@@ -13,4 +13,31 @@ describe Topic do
 			end
     end
   end
+  
+  describe "Votes" do
+    before(:each) do
+      @topic = FactoryGirl.create(:topic)
+      @user = FactoryGirl.create(:user)
+    end
+    
+    it "should be negative when one user downvotes" do
+      @topic.vote :voter => @user, :vote => "bad"
+      score = @topic.upvotes.size - @topic.downvotes.size
+      score.should == -1
+    end
+    
+    it "should be positive when one user upvotes" do
+      @topic.vote :voter => @user
+      score = @topic.upvotes.size - @topic.downvotes.size
+      score.should == 1
+    end
+    
+    it "should be zero when one user upvotes and another user downvotes" do
+      @user2 = FactoryGirl.create(:user)
+      @topic.vote :voter => @user
+      @topic.vote :voter => @user2, :vote => "bad"
+      score = @topic.upvotes.size - @topic.downvotes.size
+      score.should == 0
+    end
+  end
 end

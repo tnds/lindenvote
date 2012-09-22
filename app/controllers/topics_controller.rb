@@ -15,7 +15,16 @@ class TopicsController < ApplicationController
   # GET /topics/1.json
   def show
     @topic = Topic.find(params[:id])
-
+    @topic_score = @topic.upvotes.size - @topic.downvotes.size
+    @total_poll_votes = @topic.poll.votes.size
+    if @total_poll_votes == 0
+      @poll_upvotes = 0.to_f
+      @poll_downvotes = 0.to_f
+    else
+      @poll_upvotes = ((@topic.poll.upvotes.size.to_f / @total_poll_votes)*100).round
+      @poll_downvotes = ((@topic.poll.downvotes.size.to_f / @total_poll_votes)*100).round
+    end
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @topic }
@@ -81,5 +90,29 @@ class TopicsController < ApplicationController
       format.html { redirect_to topics_url }
       format.json { head :no_content }
     end
+  end
+  
+  def upvote
+    @topic = Topic.find(params[:id])
+    @topic.vote :voter => current_user
+    redirect_to @topic
+  end
+  
+  def downvote
+    @topic = Topic.find(params[:id])
+    @topic.vote :voter => current_user, :vote => "bad"
+    redirect_to @topic
+  end
+  
+  def upvote_poll
+    @topic = Topic.find(params[:id])
+    @topic.poll.vote :voter => current_user
+    redirect_to @topic
+  end
+  
+  def downvote_poll
+    @topic = Topic.find(params[:id])
+    @topic.poll.vote :voter => current_user, :vote => "bad"
+    redirect_to @topic
   end
 end

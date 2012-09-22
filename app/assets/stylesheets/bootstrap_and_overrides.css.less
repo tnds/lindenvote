@@ -44,3 +44,67 @@ body {
 .navbar-form div, .navbar-form input, .user_nav input[type="submit"] {
   display: inline-block;
 }
+
+.border-left {
+  border-left:1px solid;
+}
+
+.vote {
+  font-size: 30px;
+  a { text-decoration: none;
+      color:@black;
+  }
+}
+
+.down {
+  a:hover { color: @red }
+  padding-top: 15px;
+}
+
+.up {
+  padding-bottom:10px;
+  a:hover { color: @green }
+}
+
+.score {
+  font-size:35px;
+}
+
+.voting {
+  margin-top:20px;
+}
+
+@poll_height: 40px;
+#poll {
+  margin:auto;
+  margin-top:30px;
+  margin-bottom:-40px;
+  
+  .progress {
+    height:@poll_height;
+  }
+
+ .bar {
+   p {
+     font-size:20px;
+     line-height:@poll_height;
+     vertical-align:middle;
+   }
+  }
+}
+
+.poll-button {
+  font-size:@poll_height;
+  line-height:@poll_height;
+  margin-right:5px;
+
+a { text-decoration:none; }
+}
+
+.yes-vote {
+  a { color:@green; }
+}
+
+.no-vote {
+  a { color:@red; }
+}

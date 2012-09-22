@@ -1,0 +1,31 @@
+<h1>Listing arguments</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Sort</th>
+    <th>Topic</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @arguments.each do |argument| %>
+  <tr>
+    <td><%= argument.title %></td>
+    <td><%= argument.description %></td>
+    <td><%= argument.sort %></td>
+    <td><%= argument.topic %></td>
+    <td><%= argument.user %></td>
+    <td><%= link_to 'Show', argument %></td>
+    <td><%= link_to 'Edit', edit_argument_path(argument) %></td>
+    <td><%= link_to 'Destroy', argument, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Argument', new_argument_path %>

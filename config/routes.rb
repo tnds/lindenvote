@@ -1,5 +1,18 @@
 Lindenvote::Application.routes.draw do
-  resources :topics
+  resources :topics do
+    member do
+      get "upvote"
+      get "downvote"
+      get "upvote_poll"
+      get "downvote_poll"
+    end
+    resources :arguments do
+      member do
+        get "upvote"
+        get "downvote"
+      end
+    end
+  end
 
   devise_for :users
 
