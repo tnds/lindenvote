@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 user = User.create(:username => "user1", :email => "user1@example.com", :password => "123456")
+admin = User.create(:username => "admin", :email => "admin@example.com", :password => "123456")
 topic = user.topics.build(:title => "Foo", :description => "Bar")
 topic.save
 pro_argument = topic.arguments.build(:title => "Foo", :description => "Bar", :sort => "pro", :user_id => user.id)
