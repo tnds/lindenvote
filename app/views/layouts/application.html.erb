@@ -47,9 +47,8 @@
           <%= link_to "Lindenvote", root_path, :class => "brand"%>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              <li><%= link_to "About", "/about"  %></li>
+              <li><%= link_to "Imprint", "/imprint"  %></li>
             </ul>
             <% if signed_in? %>
             <ul class="nav pull-right">
@@ -76,11 +75,11 @@
         <%= yield %>
       </div>
     </div><!--/row-->
-
+<!--
     <footer>
       <p>&copy; Company 2012</p>
     </footer>
-
+-->
     <!-- Javascripts
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
