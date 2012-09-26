@@ -25,7 +25,7 @@
   
   <div id="poll" class="row">
     <div class="poll-button yes-vote pull-left span1">
-      <%= link_to upvote_poll_topic_path(@topic) do %>
+      <%= link_to upvote_poll_topic_path(@topic), :id => "yes-vote" do %>
         <i class='icon-thumbs-up'></i>
       <% end %>
     </div>
@@ -38,7 +38,7 @@
       <% end %>
     </div>
     <div class="poll-button no-vote pull-right span1">
-      <%= link_to downvote_poll_topic_path(@topic) do %>
+      <%= link_to downvote_poll_topic_path(@topic), :id => "no-vote" do %>
         <i class='icon-thumbs-down'></i>
       <% end %>
     </div>
@@ -115,10 +115,10 @@
   <%= link_to t('.back', :default => t("helpers.links.back")),
               topics_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_topic_path(@topic), :class => 'btn' if can? :edit, @topic %>
+              edit_topic_path(@topic), :class => 'btn edit-topic' if can? :edit, @topic %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               topic_path(@topic),
               :method => 'delete',
               :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' if can? :destroy, @topic%>
+              :class => 'btn btn-danger destroy-topic' if can? :destroy, @topic%>
 </div>

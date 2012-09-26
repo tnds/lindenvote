@@ -1,4 +1,5 @@
 class TopicsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
   load_and_authorize_resource
   # GET /topics
   # GET /topics.json
@@ -87,7 +88,7 @@ class TopicsController < ApplicationController
     @topic.destroy
 
     respond_to do |format|
-      format.html { redirect_to topics_url }
+      format.html { redirect_to root_url, notice: "Topic was successfully deleted." }
       format.json { head :no_content }
     end
   end

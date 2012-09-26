@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   attr_accessor :login
   
   validates :username, :presence => true, :uniqueness => true
-  validates :role, :presence => true
+  validates :role, :presence => true, :inclusion => { :in => %w(user admin), :message => "%{value} is not a valid role" } # TODO: add i18n meesage
   
   has_many :topics
   
