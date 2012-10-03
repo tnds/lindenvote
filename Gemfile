@@ -65,3 +65,6 @@ gem "devise"
 gem "cancan"
 gem "simple_form"
 gem "acts_as_votable", "~> 0.3.1"
+
+gem "haml-rails"
+gem "kaminari"
