@@ -1,0 +1,23 @@
+%h1 Listing arguments
+%table
+  %tr
+    %th Title
+    %th Description
+    %th Sort
+    %th Topic
+    %th User
+    %th
+    %th
+    %th
+  - @arguments.each do |argument|
+    %tr
+      %td= argument.title
+      %td= argument.description
+      %td= argument.sort
+      %td= argument.topic
+      %td= argument.user
+      %td= link_to 'Show', argument
+      %td= link_to 'Edit', edit_argument_path(argument)
+      %td= link_to 'Destroy', argument, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Argument', new_argument_path

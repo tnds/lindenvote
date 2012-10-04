@@ -1,0 +1,15 @@
+.page-header.hero-unit
+  .row
+    .span8
+      %h1= @topic.title
+      %p= @topic.description
+      %p
+        %b= t("created_by") + " " + @topic.user.username  + " " + distance_of_time_in_words(@topic.created_at, Time.now) + " ago"
+= simple_form_for [@topic, @argument], :html => { :class => 'form-horizontal' } do |f|
+  = f.input :title
+  = f.input :description
+  = f.input :sort, :as => :hidden, :value => @argument.sort
+  .form-actions
+    = f.button :submit, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), |
+      topic_path(@topic), :class => 'btn'                          |

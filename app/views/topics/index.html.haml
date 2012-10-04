@@ -1,0 +1,44 @@
+- model_class = Topic
+
+= link_to t('.new', :default => t("helpers.links.new")), new_topic_path, :class => 'btn btn-primary btn-block btn-large'
+- @topics.each do |topic|
+  = render :partial => 'topic', :locals => {:topic => topic}
+=paginate @topics
+
+:javascript
+  (function() {
+    var page = 1,
+        loading = false;
+
+    function nearBottomOfPage() {
+      return $(window).scrollTop() > $(document).height() - $(window).height() - 200;
+    }
+
+    $(window).scroll(function(){
+      if (loading) {
+        return;
+      }
+
+      if(nearBottomOfPage()) {
+        loading=true;
+        page++;
+        $.ajax({
+          url: '/?page=' + page,
+          type: 'get',
+          dataType: 'script',
+          success: function() {
+            $(window).sausage('draw');
+            loading=false;
+          }
+        });
+      }
+    });
+
+   $(window)
+       .sausage({
+           content: function (i, $page) {
+               return '<div>' + $page.data('name') + '</div>';
+       }
+   })
+   ;
+  }());

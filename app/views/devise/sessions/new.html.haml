@@ -1,0 +1,17 @@
+.span6.spancenter
+  .page-header
+    %h2 Login
+  = simple_form_for resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => 'form-horizontal' } do |f|
+    = f.input :login, :wrapper => :prepend do
+      %span.add-on
+        %i.icon-user
+      = f.input_field :login, :placeholder => t("username_or_email")
+    = f.input :password, :wrapper => :prepend do
+      %span.add-on
+        %i.icon-lock
+      = f.input_field :password, :placeholder => t("password")
+    - if devise_mapping.rememberable?
+      = f.input :remember_me, :as => :boolean
+    = render "devise/shared/links"
+    .form-actions.centered-content
+      = f.submit 'Login', :class => 'btn btn-primary'
