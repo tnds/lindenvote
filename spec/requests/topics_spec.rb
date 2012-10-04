@@ -166,7 +166,7 @@ describe "Topics" do
     describe "on landing page" do
       it "sees topics" do
         @topics = Array.new
-        5.times do
+        10.times do
           @topics << FactoryGirl.create(:topic)
         end
         visit root_path
@@ -194,6 +194,8 @@ describe "Topics" do
         visit topic_path(@topic)
         page.should have_content(@topic.title)
       end
+      
+      
     end
   end
 end
