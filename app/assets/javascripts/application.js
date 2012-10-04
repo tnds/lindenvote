@@ -13,4 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require jquery.cookie
+//= require bootstrap-tour
 //= require_tree .
+
