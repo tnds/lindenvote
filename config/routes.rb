@@ -1,5 +1,5 @@
 Lindenvote::Application.routes.draw do
-  resources :topics do
+  resources :topics, :except => :index do
     member do
       get "upvote"
       get "downvote"

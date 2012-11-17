@@ -1,0 +1,16 @@
+.well
+  .row
+    .span1.centered-content.voting
+      .up.vote
+        = link_to upvote_topic_argument_path(@topic, argument), :data => { :placement => "top", "original-title" => t("topics.show.upvote_argument") }, :rel => "tooltip" do
+          %i.icon-circle-arrow-up
+      .score
+        = argument.score
+      .down.vote
+        = link_to downvote_topic_argument_path(@topic, argument), :data => { :placement => "bottom", "original-title" => t("topics.show.downvote_argument") }, :rel => "tooltip" do
+          %i.icon-circle-arrow-down
+    .span4
+      %h3= argument.title
+      %p= argument.description
+      %p
+        %b= t("dictionary.created_by") + " " + argument.user.username  + " " + distance_of_time_in_words(argument.created_at, Time.now) + " " + t("dictionary.ago")

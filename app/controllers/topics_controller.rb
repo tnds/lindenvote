@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all
+    @topics = Topic.order(:created_at).page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -96,7 +96,7 @@ class TopicsController < ApplicationController
   def upvote
     @topic = Topic.find(params[:id])
     @topic.vote :voter => current_user
-    redirect_to @topic
+    redirect_to :back
   end
   
   def downvote

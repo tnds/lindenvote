@@ -1,6 +1,7 @@
 class Topic < ActiveRecord::Base
   acts_as_votable
-
+  paginates_per 25
+  
   has_one :poll
   has_many :arguments
   

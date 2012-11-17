@@ -3,79 +3,50 @@
   .row-fluid
     .span1.centered-content.voting.pull-left
       .up.vote
-        = link_to upvote_topic_path(@topic) do
+        = link_to upvote_topic_path(@topic), :data => { :placement => "top", "original-title" => t(".upvote") }, :rel => "tooltip" do
           %i.icon-circle-arrow-up
       .score
         = @topic_score
       .down.vote
-        = link_to downvote_topic_path(@topic) do
+        = link_to downvote_topic_path(@topic), :data => { :placement => "bottom", "original-title" => t(".downvote") }, :rel => "tooltip" do
           %i.icon-circle-arrow-down
     .span11
       %h1= @topic.title
       %p= @topic.description
       %p
-        %b= t("created_by") + " " + @topic.user.username  + " " + distance_of_time_in_words(@topic.created_at, Time.now) + " ago"
+        %b= t("dictionary.created_by") + " " + @topic.user.username  + " " + distance_of_time_in_words(@topic.created_at, Time.now) + " ago"
   #poll.row
     .poll-button.yes-vote.pull-left.span1
-      = link_to upvote_poll_topic_path(@topic), :id => "yes-vote" do
+      = link_to upvote_poll_topic_path(@topic), :id => "yes-vote", :data => { :placement => "top", "original-title" => t(".yes") }, :rel => "tooltip" do
         %i.icon-thumbs-up
     .progress.span8
       - if @total_poll_votes == 0
         .bar.bar-warning{:style => "width: 100%;"}
-          %p= t("no_votes")
+          %p= t(".no_votes")
       - else
         .bar.bar-success{:style => "width: #{@poll_upvotes}%;"}
-          %p= "#{t('yes')} (#{@poll_upvotes} %)"
+          %p= "#{t('.yes')} (#{@poll_upvotes} %)"
         .bar.bar-danger{:style => "width: #{@poll_downvotes}%;"}
-          %p= "#{t('no')} (#{@poll_downvotes} %)"
+          %p= "#{t('.no')} (#{@poll_downvotes} %)"
     .poll-button.no-vote.pull-right.span1
-      = link_to downvote_poll_topic_path(@topic), :id => "no-vote" do
+      = link_to downvote_poll_topic_path(@topic), :id => "no-vote", :data => { :placement => "top", "original-title" => t(".no") }, :rel => "tooltip" do
         %i.icon-thumbs-down
 .row
   .span6
     %h2.centered-content Pro
     - @topic.arguments.where(:sort => "pro").each do |argument|
-      .well
-        .row
-          .span1.centered-content.voting
-            .up.vote
-              = link_to upvote_topic_argument_path(@topic, argument) do
-                %i.icon-circle-arrow-up
-            .score
-              = argument.score
-            .down.vote
-              = link_to downvote_topic_argument_path(@topic, argument) do
-                %i.icon-circle-arrow-down
-          .span4
-            %h3= argument.title
-            %p= argument.description
-            %p
-              %b= t("created_by") + " " + argument.user.username  + " " + distance_of_time_in_words(argument.created_at, Time.now) + " ago"
+      = render :partial => 'topic_argument', :locals => {argument: argument}
+
     = link_to new_topic_argument_path(:topic_id => @topic.id, :sort => "pro"), :class => "btn btn-success btn-block btn-large" do
       %i.icon-plus-sign
-      = t("add_pro_argument")
+      = t(".add_pro_argument")
   .span6
     %h2.centered-content Contra
     - @topic.arguments.where(:sort => "contra").each do |argument|
-      .well
-        .row
-          .span1.centered-content.voting
-            .up.vote
-              = link_to upvote_topic_argument_path(@topic, argument) do
-                %i.icon-circle-arrow-up
-            .score
-              = argument.score
-            .down.vote
-              = link_to downvote_topic_argument_path(@topic, argument) do
-                %i.icon-circle-arrow-down
-          .span4
-            %h3= argument.title
-            %p= argument.description
-            %p
-              %b= t("created_by") + " " + argument.user.username  + " " + distance_of_time_in_words(argument.created_at, Time.now) + " ago"
+      = render :partial => 'topic_argument', :locals => {argument: argument}
     = link_to new_topic_argument_path(:topic_id => @topic.id, :sort => "contra"), :class => "btn btn-danger btn-block btn-large" do
       %i.icon-minus-sign
-      = t("add_contra_argument")
+      = t(".add_contra_argument")
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), |
     topics_path, :class => 'btn'                             |

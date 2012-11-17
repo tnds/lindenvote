@@ -4,7 +4,7 @@
       %h1= @topic.title
       %p= @topic.description
       %p
-        %b= t("created_by") + " " + @topic.user.username  + " " + distance_of_time_in_words(@topic.created_at, Time.now) + " ago"
+        %b= t(".created_by") + " " + @topic.user.username  + " " + distance_of_time_in_words(@topic.created_at, Time.now) + " " + t(".ago")
 = simple_form_for [@topic, @argument], :html => { :class => 'form-horizontal' } do |f|
   = f.input :title
   = f.input :description

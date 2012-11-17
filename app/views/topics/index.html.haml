@@ -1,44 +1,37 @@
-- model_class = Topic
-
 = link_to t('.new', :default => t("helpers.links.new")), new_topic_path, :class => 'btn btn-primary btn-block btn-large'
 - @topics.each do |topic|
-  = render :partial => 'topic', :locals => {:topic => topic}
+  .well.well-large.topic
+    .row-fluid
+      .span1.centered-content.voting.pull-left
+        .up.vote
+          = link_to upvote_topic_path(topic), :data => { :placement => "top", "original-title" => t(".upvote") }, :rel => "tooltip" do
+            %i.icon-circle-arrow-up
+        .score
+          = topic.upvotes.size - topic.downvotes.size
+        .down.vote
+          = link_to downvote_topic_path(topic), :data => { :placement => "bottom", "original-title" => t(".downvote") }, :rel => "tooltip" do
+            %i.icon-circle-arrow-down
+      .span10
+        %h3= link_to topic.title, topic_path(topic)
+        %p= topic.description
+        - if can? :edit, topic
+          %p.topic-actions
+            = link_to t('.edit', :default => t("helpers.links.edit")), edit_topic_path(topic), :class => 'btn btn-mini edit-topic'
+            = link_to t('.destroy', :default => t("helpers.links.destroy")),                                                                                       |
+              topic_path(topic),                                                                                           |
+              :method => :delete,                                                                                          |
+              :data => { :confirm => t('.confirm', :default => t(".delete-confirm")) }, |
+              :class => 'btn btn-mini btn-danger destroy-topic'                                                            |
+      .row-fluid
+        .span12
+          %hr
+          .row-fluid
+            .span6.pull-left
+              %p
+                %b= t("dictionary.created_by") + " " + topic.user.username  + " " + distance_of_time_in_words(topic.created_at, Time.now) + " " + t("dictionary.ago")
+            .span6.pull-right.align-right
+              %p
+                %i.icon-comment
+                = t(".arguments")
+                \: #{topic.arguments.count}
 =paginate @topics
-
-:javascript
-  (function() {
-    var page = 1,
-        loading = false;
-
-    function nearBottomOfPage() {
-      return $(window).scrollTop() > $(document).height() - $(window).height() - 200;
-    }
-
-    $(window).scroll(function(){
-      if (loading) {
-        return;
-      }
-
-      if(nearBottomOfPage()) {
-        loading=true;
-        page++;
-        $.ajax({
-          url: '/?page=' + page,
-          type: 'get',
-          dataType: 'script',
-          success: function() {
-            $(window).sausage('draw');
-            loading=false;
-          }
-        });
-      }
-    });
-
-   $(window)
-       .sausage({
-           content: function (i, $page) {
-               return '<div>' + $page.data('name') + '</div>';
-       }
-   })
-   ;
-  }());

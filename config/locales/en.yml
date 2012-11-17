@@ -2,17 +2,92 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  dictionary:
+    edit: &edit "Edit"
+    destroy: &destroy "Delete"
+    are_you_sure: &are_you_sure "Are you sure?"
+    title: &title "Title"
+    description: &description "Description"
+    cancel: &cancel "Cancel"
+    new: &new "New"
+    upvote_topic: &upvote_topic "That Topic is important"
+    downvote_topic: &downvote_topic "That Topic is unimportant"
+    created_by: &created_by "Created by"
+    ago: &ago "ago"
+    "yes": &yes "yes"
+    "no": &no "no"
+    username_or_email: &username_or_email "Username or Email"
+    login: &login "Login"
+    password: &password "Password"
+    register: &register "Sign Up"
+    username: &username "Username"
+  activerecord:
+    models:
+      user: User
+    attributes:
+      user:
+        username: *username
+        login: *login
+        password: *password
+        remember_me: "Keep me logged in"
+        password_confirmation: "Password confirmation"
+      topic:
+        title: *title
+        description: *description
+  devise:
+    sessions:
+      new:
+        username_or_email: *username_or_email
+        login: *login
+        password: *password
+    shared:
+      links:
+        sign_in: *login
+        sign_up: *register
+        forgot_password: "Forgot your password?"
+        did_not_receive_confirmation_instructions: "Didn't receive confirmation instructions?"
+        did_not_receive_unlock_instructions: "Didn't receive unlock instructions?"
+        sign_in_with: "Sign in with"
+    registrations:
+      edit:
+      new:        
+  topics:
+    show:
+      upvote: *upvote_topic
+      downvote: *downvote_topic
+      upvote_argument: "I agree"
+      downvote_argument: "I disagree"
+      no_votes: "no votes yet"
+      "yes": *yes 
+      "no": *no
+      add_pro_argument: "add pro argument"
+      add_contra_argument: "add contra argument"
+    index:
+      new: "Create a new Topic"
+      arguments: "Arguments"
+      delete-confirm: *are_you_sure
+      upvote: *upvote_topic
+      downvote: *downvote_topic
+    edit:
+      title: "Edit Topic"
+  helpers:
+    links:
+      new: *new
+      cancel: *cancel
+      destroy: *destroy
+    submit:
+      topic:
+        create: "Add topic"
+        update: "Save changes"
+      argument:
+        create: "Post argument"
+        update: "Save changes"
   email: "Email"
   password: "Password"
-  sign_up: "Sign up"
-  username_or_email: "Username or Email"
-  forgot_password: "Forgot your Password?"
-  edit_account: "Edit Account"
-  change_password: "Change your password"
-  created_by: "created by"
-  "yes": "Yes"
-  "no": "No"
-  no_votes: "No votes yet"
-  add_pro_argument: "Add Pro Argument"
-  add_contra_argument: "Add Contra Argument"
-  no_valid_role: "is not a valid role"
+  sign_up: "sign up"
+  forgot_password: "forgot your password?"
+  edit_account: "edit account"
+  change_password: "change your password"
+  "yes": "yes"
+  "no": "no"
+  no_valid_role: "is no valid role"

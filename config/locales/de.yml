@@ -1,0 +1,94 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+de:
+  dictionary:
+    edit: &edit "Bearbeiten"
+    destroy: &destroy "Löschen"
+    are_you_sure: &are_you_sure "Sind Sie sicher?"
+    title: &title "Titel"
+    description: &description "Beschreibung"
+    cancel: &cancel "Abbrechen"
+    new: &new "Neu"
+    upvote_topic: &upvote_topic "Dieses Thema ist wichtig"
+    downvote_topic: &downvote_topic "Dieses Thema ist unwichtig"
+    created_by: &created_by "Erstellt von"
+    ago: &ago "zuvor"
+    "yes": &yes "ja"
+    "no": &no "nein"
+    username_or_email: &username_or_email "Benutzername oder Email"
+    login: &login "Login"
+    password: &password "Passwort"
+    register: &register "Registrieren"
+    username: &username "Benutzername"
+  activerecord:
+    models:
+      user: Nutzer
+    attributes:
+      user:
+        username: *username
+        login: *login
+        password: *password
+        remember_me: "Eingeloggt bleiben"
+        password_confirmation: "Passwort wiederholen"
+      topic:
+        title: *title
+        description: *description
+  devise:
+    sessions:
+      new:
+        username_or_email: *username_or_email
+        login: *login
+        password: *password
+    shared:
+      links:
+        sign_in: *login
+        sign_up: *register
+        forgot_password: "Passwort vergessen?"
+        did_not_receive_confirmation_instructions: "Bestätigungsmail nicht erhalten?"
+        did_not_receive_unlock_instructions: "Aktivierungsmail nicht erhalten?"
+        sign_in_with: "Anmelden mit"
+    registrations:
+      edit:
+      new:
+        sign_up: *register
+  topics:
+    show:
+      upvote: *upvote_topic
+      downvote: *downvote_topic
+      upvote_argument: "Ich stimme zu"
+      downvote_argument: "Ich stimme nicht zu"
+      no_votes: "Noch keine Stimmen abgegeben"
+      "yes": *yes
+      "no": *no
+      add_pro_argument: "Pro-Argument hinzufügen"
+      add_contra_argument: "Contra-Argument hinzufügen"
+    index:
+      new: "Neues Thema erstellen"
+      arguments: "Argumente"
+      delete-confirm: *are_you_sure
+      upvote: *upvote_topic
+      downvote: *downvote_topic
+    edit:
+      title: "Thema bearbeiten"
+  helpers:
+    links:
+      new: *new
+      cancel: *cancel
+      destroy: *destroy
+    submit:
+      topic:
+        create: "Thema erstellen"
+        update: "Änderungen speichern"
+      argument:
+        create: "Argument speichern"
+        update: "Änderungen speichern"
+  email: "Email"
+  password: "Password"
+  sign_up: "sign up"
+  forgot_password: "forgot your password?"
+  edit_account: "edit account"
+  change_password: "change your password"
+  "yes": "yes"
+  "no": "no"
+  no_valid_role: "is no valid role"

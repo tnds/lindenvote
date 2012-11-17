@@ -68,3 +68,4 @@ gem "acts_as_votable", "~> 0.3.1"
 
 gem "haml-rails"
 gem "kaminari"
+gem "rails-i18n"
